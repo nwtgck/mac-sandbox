@@ -13,11 +13,15 @@ cd <this repo>
 ruby makeup.rb myroot
 ```
 
+![Step1 gif](./demos/step1-makeup.gif)
+
 ### Step 2. Enter the `myroot`
 
 ```bash
 sudo chroot ./myroot
 ```
+
+![Step2 gif](./demos/step2-chroot.gif)
 
 That's all !
 
