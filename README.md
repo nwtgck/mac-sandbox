@@ -25,6 +25,10 @@ sudo chroot ./myroot
 
 That's all !
 
+## How to add commands
+
+You can add some commands to [`environment.yaml`](./environment.yaml)
+
 ## Available/unavailable commands
 
 ### Host environment

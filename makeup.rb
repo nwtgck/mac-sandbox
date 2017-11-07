@@ -3,8 +3,8 @@
 require 'yaml'
 require 'fileutils'
 
-# Path of transport yaml
-TRANSPORT_YAML_PATH = './transport.yaml'
+# Path of environment yaml
+ENVIRONMENT_YAML_PATH = './environment.yaml'
 
 # If command line arg is not valid
 if ARGV.length != 1
@@ -35,13 +35,13 @@ if Dir.exist? CH_ROOT
 end
 
 # Load yaml
-transport_yaml = YAML.load_file(TRANSPORT_YAML_PATH)
+env_yaml = YAML.load_file(ENVIRONMENT_YAML_PATH)
 
 # Files and directories to be brought
-export_files = transport_yaml["files_and_directories"]
+export_files = env_yaml["files_and_directories"]
 
 # Unresolved executable files
-non_resolved_app_paths = transport_yaml["executables"]
+non_resolved_app_paths = env_yaml["executables"]
 
 
 # Confirm whether the executables and files
