@@ -30,9 +30,10 @@ macOS Sierra
 Version 10.12.6
 ```
 
-### Primitives
+### WORK!
 
-##### WORK!
+#### Primitives
+
 - [x] `cd`
 - [x] `pwd`
 - [x] `ls`
@@ -47,51 +48,43 @@ Version 10.12.6
 - [x] `grep`
 - [x] `which`
 
-#### NOT-WORK :(
-
-- [] `ps` - Killed: 9
-- [] `sudo` - Killed: 9
-
-
-
-### Networking
-
-#### WORK!
+#### Networking
 
 - [x] `nslookup`
 - [x] `dig`
 
 
-#### NOT-WORK :(
-
-- [] `curl` - cann't solve google.com
-- [] `ping` - Killed: 9
-- [] `telnet` - can't solve
-
-
-
-
-### Editors
-
-#### WORK!
+#### Editors
 
 - [x] `vi`
 - [x] `vim`
 
-#### NOT-WORK :(
 
-- [] `nano` - Error opening terminal: xterm-256color.
-
-
-### Programming Languages
-
-#### WORK!
+#### Programming Languages
 
 - [x] `perl`
 - [x] `ruby`
 - [x] `irb`
 
-#### NOT-WORK :(
+### NOT-WORK :(
 
-- [] `java` - ... FillMatcher: failed to create CFNumberFormatter There do not ...
-- [] `javac` - ... FillMatcher: failed to create CFNumberFormatter There do not ...
+#### Primitives
+
+- [ ] `ps` - Killed: 9
+- [ ] `sudo` - Killed: 9
+
+#### Networking
+
+- [ ] `curl` - cann't solve google.com
+- [ ] `ping` - Killed: 9
+- [ ] `telnet` - can't solve
+
+#### Editors
+
+- [ ] `nano` - Error opening terminal: xterm-256color.
+
+
+#### Programming Languages
+
+- [ ] `java` - ... FillMatcher: failed to create CFNumberFormatter There do not ...
+- [ ] `javac` - ... FillMatcher: failed to create CFNumberFormatter There do not ...
