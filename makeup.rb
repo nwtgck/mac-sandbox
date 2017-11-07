@@ -22,7 +22,7 @@ CH_ROOT = File.absolute_path(ARGV[0])
 
 BREW_DIR_NAME = "homebrew"
 
-puts "chroot先は #{CH_ROOT} です"
+puts "Destination of chroot is '#{CH_ROOT}'"
 
 if Dir.exist? CH_ROOT
   # Remove CH_ROOT directory to clean
@@ -92,7 +92,7 @@ non_resolved_app_paths = [
 # Confirm whether the executables and files
 (non_resolved_app_paths+export_files).each{|app_path|
   if !File.exist?(app_path)
-    puts "'#{app_path}' が見つかりません"
+    puts "'#{app_path}' not found"
     exit
   end
 }
