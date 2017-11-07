@@ -4,6 +4,13 @@
 
 require 'fileutils'
 
+# If command line arg is not valid
+if ARGV.length != 1
+  # Output usage and exit program
+  STDERR.puts("Usage: ruby makeup.rb <myroot dir>")
+  exit(1)
+end
+
 # app_pathに関する依存しているappを配列で返す
 def get_dependencies app_path #=> returns [app_path]
   `otool -L #{app_path}`.scan(%r{\t(.+) \(.+\)}).flatten
@@ -16,7 +23,7 @@ end
 # end
 
 # ROOTにしたいディレクトリ
-CH_ROOT = "/Users/Ryo/dev/mac-sandbox/myroot"
+CH_ROOT = File.absolute_path(ARGV[0])
 
 BREW_DIR_NAME = "homebrew"
 
