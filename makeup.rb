@@ -1,6 +1,10 @@
 # This script is to make a "myroot" directory
 
+require 'yaml'
 require 'fileutils'
+
+# Path of environment yaml
+ENVIRONMENT_YAML_PATH = './environment.yaml'
 
 # If command line arg is not valid
 if ARGV.length != 1
@@ -30,63 +34,14 @@ if Dir.exist? CH_ROOT
   system("sudo rm -rf #{CH_ROOT}")
 end
 
+# Load yaml
+env_yaml = YAML.load_file(ENVIRONMENT_YAML_PATH)
+
 # Files and directories to be brought
-export_files = [
-  "/usr/bin/cd", # cd is a file
-  "/usr/bin/gem", # gem is also a file
-  "/usr/bin/irb", # irb is a file too
-  "/System/Library/LaunchDaemons/com.apple.mDNSResponder.plist",
-  "/System/Library/Frameworks/Ruby.framework",
-  "/etc/resolv.conf", # for connecting internet
-  "/etc/hosts",
-  "/Library/Keychains/",
-  "/Library/Preferences/SystemConfiguration/", # (from: http://yamaqblog.tokyo/?p=938)
-  "/etc/sudoers",
-]
+export_files = env_yaml["files_and_directories"]
 
 # Unresolved executable files
-non_resolved_app_paths = [
-  # They seem to be essential
-  "/usr/lib/dyld", "/usr/lib/libSystem.B.dylib", "/usr/lib/libgcc_s.1.dylib", "/usr/lib/system/libmathCommon.A.dylib",
-  # List all you need
-  "/usr/bin/which",
-  "/bin/ls",
-  "/bin/sh",
-  "/bin/bash",
-  "/bin/mkdir",
-  "/bin/rm",
-  "/bin/rmdir",
-  "/bin/ps",
-  "/bin/cat",
-  "/usr/bin/sudo",
-  "/bin/chmod",
-  "/usr/bin/tar",
-  "/usr/bin/make",
-  "/usr/bin/vi",
-  "/usr/bin/vim",
-  "/usr/bin/perl",
-  "/usr/bin/perl5.18",
-  "/sbin/ifconfig",
-  "/usr/bin/grep",
-  "/usr/bin/tee",
-  "/usr/bin/nano",    # NOT-WORK（Error opening terminal: xterm-256color.
-  "/usr/bin/touch",
-  "/usr/bin/telnet", # cann't resolve name
-  "/usr/bin/ssh",    # Error (Killed: 9)
-  "/usr/bin/dig",    # WORK! (resolve name)
-  "/usr/sbin/networksetup",
-  "/usr/bin/java",    # NOT-WORK（2016-09-26 14:44:24.304 java[17447:3497666] [JVM Detection] FillMatcher: failed to create CFNumberFormatter
-  "/usr/bin/javac",   # NOT-WORK（2016-09-26 14:44:13.512 javac[17445:3497466] [JVM Detection] FillMatcher: failed to create CFNumberFormatter
-  "/usr/bin/ld",
-  "/sbin/ping",       # NOT-WORK (Killed: 9)
-  "/usr/bin/curl",    # if curl google.com, it says "curl: (6) Could not resolve host: google.com"
-  "/usr/bin/ruby",    # WORK! (irb works too)
-  "/usr/bin/nslookup",
-  "/usr/bin/openssl",
-  "/bin/launchctl",
-  "/usr/bin/git",    # It will require Xcode installation
-  # "/usr/bin/gcc" It will require Xcode installation
-]
+non_resolved_app_paths = env_yaml["executables"]
 
 
 # Confirm whether the executables and files
