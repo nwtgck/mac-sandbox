@@ -11,6 +11,7 @@ files_and_directories:
   - "/Library/Preferences/SystemConfiguration/" # (from: http://yamaqblog.tokyo/?p=938)
   - "/etc/sudoers"
   - "/private/var/db/dyld/dyld_shared_cache_x86_64h"
+  # - "/Applications/Xcode.app"
 
 executables:
   # They seem to be essential
@@ -55,7 +56,11 @@ executables:
   - "/usr/bin/nslookup"
   - "/usr/bin/openssl"
   - "/bin/launchctl"
-  - "/usr/bin/git"    # It will require Xcode installation
+  # - "/usr/bin/git"    # It will require Xcode installation
   # - "/usr/bin/gcc" It will require Xcode installation
+
+  - /Applications/Xcode.app/Contents/Developer/usr/bin/git # (xcode-select --print-path)
+  - /Applications/Xcode.app/Contents/Developer/usr/bin/gcc
+  
 
   - "/usr/bin/sw_vers" # For brew installation
