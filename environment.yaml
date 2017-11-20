@@ -56,6 +56,7 @@ executables:
   - "/usr/bin/nslookup"
   - "/usr/bin/openssl"
   - "/bin/launchctl"
+  - "/usr/bin/xcode-select"
   # - "/usr/bin/git"    # It will require Xcode installation
   # - "/usr/bin/gcc" It will require Xcode installation
 
