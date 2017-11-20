@@ -56,7 +56,12 @@ executables:
   - "/usr/bin/nslookup"
   - "/usr/bin/openssl"
   - "/bin/launchctl"
-  - "/usr/bin/xcode-select"
+  - "/usr/bin/xcode-select" # for brew installation
+  - "/usr/bin/dsmemberutil" # for brew installation
+  - "/bin/stty"             # for brew installation
+  - "/usr/sbin/chown"       # for brew installation
+  - "/usr/bin/chgrp"        # for brew installation
+
   # - "/usr/bin/git"    # It will require Xcode installation
   # - "/usr/bin/gcc" It will require Xcode installation
 

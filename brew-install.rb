@@ -66,8 +66,13 @@ end
 
 def sudo(*args)
   args.unshift("-A") unless ENV["SUDO_ASKPASS"].nil?
-  ohai "/usr/bin/sudo", *args
-  system "/usr/bin/sudo", *args
+
+  # FIXME (recomment-out)
+  # ohai "/usr/bin/sudo", *args
+  # system "/usr/bin/sudo", *args
+  ohai *args
+  system *args
+  
 end
 
 def getc # NOTE only tested on OS X
@@ -107,7 +112,9 @@ def force_curl?
 end
 
 def macos_version
-  @macos_version ||= Version.new(`/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/])
+  # @macos_version ||= Version.new(`/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/])
+  # FIXME
+  @macos_version ||= Version.new("10.12.6")
 end
 
 def should_install_command_line_tools?
@@ -160,9 +167,10 @@ def chgrp?(d)
   !File.grpowned?(d)
 end
 
-# Invalidate sudo timestamp before exiting (if it wasn't active before).
-Kernel.system "/usr/bin/sudo -n -v 2>/dev/null"
-at_exit { Kernel.system "/usr/bin/sudo", "-k" } unless $?.success?
+# FIXME (recomment-out)
+# # Invalidate sudo timestamp before exiting (if it wasn't active before).
+# Kernel.system "/usr/bin/sudo -n -v 2>/dev/null"
+# at_exit { Kernel.system "/usr/bin/sudo", "-k" } unless $?.success?
 
 # The block form of Dir.chdir fails later if Dir.CWD doesn't exist which I
 # guess is fair enough. Also sudo prints a warning message for no good reason
@@ -171,7 +179,10 @@ Dir.chdir "/usr"
 ####################################################################### script
 abort "See Linuxbrew: http://linuxbrew.sh/" if RUBY_PLATFORM.to_s.downcase.include?("linux")
 abort "Mac OS X too old, see: https://github.com/mistydemeo/tigerbrew" if macos_version < "10.5"
-abort "Don't run this as root!" if Process.uid.zero?
+
+# FIXME (recomment-out)
+# abort "Don't run this as root!" if Process.uid.zero?
+
 abort <<-EOABORT unless `dsmemberutil checkmembership -U "#{ENV["USER"]}" -G admin`.include? "user is a member"
 This script requires the user #{ENV["USER"]} to be an Administrator.
 EOABORT
