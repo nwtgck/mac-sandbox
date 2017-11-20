@@ -60,6 +60,7 @@ Version 10.12.6
 
 - [x] `nslookup`
 - [x] `dig`
+- [x] `curl`
 
 
 #### Editors
@@ -83,7 +84,6 @@ Version 10.12.6
 
 #### Networking
 
-- [ ] `curl` - cann't solve google.com
 - [ ] `ping` - Killed: 9
 - [ ] `telnet` - can't solve
 
