@@ -17,7 +17,7 @@ end
 # @param [String]
 # @return [Array<String>]
 def get_dependencies app_path
-  `otool -L #{app_path}`.scan(%r{\t(.+) \(.+\)}).flatten
+  `sudo otool -L #{app_path}`.scan(%r{\t(.+) \(.+\)}).flatten # sudo is necessary to `sudo otool -L /usr/bin/sudo`
 end
 
 
