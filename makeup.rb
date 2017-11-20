@@ -113,8 +113,22 @@ parent_dirs.each{|dir|
 
 # Make $CHROOT/var/run directory
 system("mkdir -p #{CH_ROOT}/var/run")
-# Link mDNSResponder (this is necessary for curl to solve in curl)
+# Link mDNSResponder (this is necessary for curl to solve in curl) (from: https://github.com/jsarenik/Mac-Hroot/blob/master/chroot.sh)
 system("ln /var/run/mDNSResponder #{CH_ROOT}/var/run/")
+
+# Set special files
+# (from: https://github.com/jsarenik/Mac-Hroot/blob/master/mkmacchroot.sh)
+[
+  "/dev/null",
+  "/dev/console",
+  "/dev/tty",
+  "/usr/share/terminfo"
+].each{|fpath|
+  to              = "#{CH_ROOT}#{fpath}"
+  parent_dir_path = File.dirname(to)
+  system("mkdir -p #{parent_dir_path}")
+  system("sudo cp -avR #{fpath} #{to}")
+}
 
 puts
 puts "OS setup is done!"
