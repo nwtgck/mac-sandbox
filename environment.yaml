@@ -12,6 +12,8 @@ files_and_directories:
   - "/etc/sudoers"
   - "/private/var/db/dyld/dyld_shared_cache_x86_64h"
   # - "/Applications/Xcode.app"
+  - /Library/Keychains/System.keychain
+  - /System/Library/Keychains/SystemRootCertificates.keychain
 
 executables:
   # They seem to be essential
@@ -61,6 +63,11 @@ executables:
   - "/bin/stty"             # for brew installation
   - "/usr/sbin/chown"       # for brew installation
   - "/usr/bin/chgrp"        # for brew installation
+  - "/usr/bin/defaults"
+  - "/usr/bin/id"           # for brew
+  - "/usr/bin/head"         # for brew
+  - "/usr/bin/uname"        # for brew
+  - "/usr/bin/awk"         # for brew
 
   # - "/usr/bin/git"    # It will require Xcode installation
   # - "/usr/bin/gcc" It will require Xcode installation
