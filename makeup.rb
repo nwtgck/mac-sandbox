@@ -110,5 +110,11 @@ parent_dirs.each{|dir|
   # Show progress
   print "\rCopying... #{i+1}/#{resolved_and_files.size}"
 }
+
+# Make $CHROOT/var/run directory
+system("mkdir -p #{CH_ROOT}/var/run")
+# Link mDNSResponder (this is necessary for curl to solve in curl)
+system("ln /var/run/mDNSResponder #{CH_ROOT}/var/run/")
+
 puts
 puts "OS setup is done!"
